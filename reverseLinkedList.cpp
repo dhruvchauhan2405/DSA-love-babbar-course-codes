@@ -78,6 +78,17 @@ void Print(Node* &head){
 
 }
 
+void reverseLinkedListrecurive (Node* &head, Node* curr, Node* prev)
+{
+    if(curr == NULL){
+        head = prev;
+        return;
+    }
+    Node* forward = curr->next;
+    reverseLinkedListrecurive(head, forward, curr);
+    curr->next = prev;
+}
+
 Node* reverseLinkedList (Node* &head)
 {
     if(head == NULL || head->next== NULL){
@@ -94,6 +105,15 @@ Node* reverseLinkedList (Node* &head)
         curr= forward;
     }
     return prev;
+}
+
+Node* reverseLinkedList2 (Node* &head)
+{
+    Node* curr = head;
+    Node* prev =NULL;
+    reverseLinkedListrecurive(head,curr,prev);
+
+    return head;
 }
 
 
@@ -126,6 +146,9 @@ int main() {
 
 
    head = reverseLinkedList(head);
+   Print(head);
+
+   reverseLinkedList2(head);
    Print(head);
    
    return 0;
