@@ -106,6 +106,25 @@ Node* reverseLinkedList (Node* &head)
     }
     return prev;
 }
+// it will return head of the reverse list
+Node* reverseLinkedList2 (Node* &head)
+{   
+    // base case
+    if(head == NULL || head->next== NULL){
+        return head;
+    }
+
+    Node* prev = NULL;
+    Node* curr = head;
+
+    while( curr!= NULL){
+        Node* forward = curr->next;
+        curr->next = prev;
+        prev= curr;
+        curr= forward;
+    }
+    return prev;
+}
 
 Node* reverseLinkedList2 (Node* &head)
 {
