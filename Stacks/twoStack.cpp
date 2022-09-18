@@ -81,29 +81,16 @@ int main() {
    }
    */
 
-  Stack st(5);
+  TwoStack st(5);
 
-  st.push(22);
-  st.push(43);
-  st.push(44);
-  st.push(22);
-  st.push(43);
-  st.push(44);
-  cout<< st.peek()<<endl;
+  st.push1(22);
+  st.push2(43);
+  st.push1(44);
+  st.push2(22);
+  st.push1(43);
+  st.push2(44);
+  
 
-  st.pop();
-  cout<< st.peek()<<endl;
-  st.pop();
-  cout<< st.peek()<<endl;
-  st.pop();
-  cout<< st.peek()<<endl;
-
-
-    if(st.isEmpty()){
-        cout<<"Stack is empty mere dost"<<endl;
-
-    }
-    else
-    cout<<"Stack is not empty mere dost"<<endl;
+  st.pop1();
    return 0;
 }
