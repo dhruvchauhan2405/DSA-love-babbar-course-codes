@@ -17,6 +17,37 @@ class Node {
 
 };
 
+void inorder(Node* root){
+    // base case
+    if(root==NULL)
+        return;
+
+    inorder(root->left);
+    cout<<root->data<<" ";
+    inorder(root->right);
+}
+
+void preorder(Node* root){
+    // base case
+    if(root==NULL)
+        return;
+
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void postorder(Node* root){
+    // base case
+    if(root==NULL)
+        return;
+
+    postorder(root->left);
+    postorder(root->right);
+    cout<<root->data<<" ";
+}
+
+
 void levelOrderTraversal(Node* root){
     queue<Node*>q;
     q.push(root);
@@ -86,6 +117,15 @@ int main() {
     takeInput(root);
     cout<<"Printing the BST"<<endl;
     levelOrderTraversal(root);
+
+    cout<<"Printing Inorder"<<endl;
+    inorder(root);
+
+    cout<<endl<<"Printing Preorder"<<endl;
+    preorder(root);
+
+    cout<<endl<<"Printing Postorder"<<endl;
+    postorder(root);
 
 
    return 0;
