@@ -108,6 +108,23 @@ void takeInput(Node* &root){
     }
 }
 
+Node* minVal(Node* root) {
+    Node * temp = root;
+
+    while(temp->left!=NULL){
+        temp = temp->left;
+    }
+    return temp;
+}
+
+Node* maxVal(Node* root) {
+    Node * temp = root;
+
+    while(temp->right!=NULL){
+        temp = temp->right;
+    }
+    return temp;
+}
 
 int main() {
    
@@ -126,6 +143,9 @@ int main() {
 
     cout<<endl<<"Printing Postorder"<<endl;
     postorder(root);
+
+    cout<<endl<<"Minimum value is "<< minVal(root)->data<<endl;
+    cout<<"Maximum value is "<< maxVal(root)->data<<endl;
 
 
    return 0;
