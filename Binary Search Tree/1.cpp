@@ -126,6 +126,56 @@ Node* maxVal(Node* root) {
     return temp;
 }
 
+void findPreSuc(Node* root,Node* &pre,Node* &suc,int key){
+    if(root==NULL){
+        return;
+    }
+
+    while(root!=NULL){
+
+        // if root is given key
+        if(root->data ==key)
+        {
+            // the minimum value in right subtree is 
+            // successor
+            if(root->right){
+                suc = root->right;
+                while(suc->left){
+                    suc =suc->left;
+                }
+            }
+
+            // the maximum value in left subtree is
+            // predessor
+            if(root->left){
+                pre = root->left;
+                while(pre->right){
+                    pre =pre->right;
+                }
+            }
+            return;
+        }
+        // If the key is greater than root, then
+        // key lies in right subtree. Root
+        // could be predessor if left
+        // subtree of key is null
+        else if(root->data<key){
+            pre = root;
+            root = root->right;
+        }
+
+        // If the key is smaller than the root, then
+        // key lies in left subtree. Root
+        // could be successor if right subtree
+        // key is null
+        else{
+            suc = root;
+            root = root->left;
+        }
+
+    }
+}
+
 int main() {
    
     Node* root =NULL;
@@ -147,6 +197,23 @@ int main() {
     cout<<endl<<"Minimum value is "<< minVal(root)->data<<endl;
     cout<<"Maximum value is "<< maxVal(root)->data<<endl;
 
+    int key;
+    cout<<"Enter the value whose predessor and successor needs to be found"<<endl;
+    cin>>key;
+
+    Node* pre = NULL;
+    Node* suc =NULL;
+    findPreSuc(root,pre,suc,key);
+
+    if(pre!= NULL)
+        cout<<"Predessor is "<< pre->data <<endl;
+    else
+        cout<<"-1"<<endl;
+
+    if(suc!= NULL)
+        cout<<"Successor is "<< suc->data <<endl;
+    else
+        cout<<"-1"<<endl;
 
    return 0;
 }
