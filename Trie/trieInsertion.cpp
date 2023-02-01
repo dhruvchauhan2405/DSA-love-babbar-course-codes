@@ -17,6 +17,19 @@ class TrieNode {
         }
 };
 
+class Trie{
+    public:
+    TrieNode* root;
+
+    void insertUtil(TrieNode* root, string word){
+
+    }
+
+    void insertWord(string word){
+        insertUtil(root,word);
+    }
+};
+
 int main() {
    
    return 0;
